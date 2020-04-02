@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+        {% block content %}
+            <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            {% if not otp and not message %}
+                <div class="form-group " >
+                    <label for="phoneno" style="margin-left: 45px; margin-top: 30px;">Enter Mobile No.</label>
+                    <input type="tel" class="form-control" id="phoneno" name="phone" style="width: 350px; height: 50px; margin-left:  40px; margin-top: 8px;">
+                </div>
+                <button type="submit" class="btn btn-primary" name="submit" style="width: 150px ;height: 44px; margin-left: 140px;">Submit</button>
+            {% endif %}
+            {% if otp %}
+                <div class="form-group ">
+                    <input value="{{otp}}" hidden name="old_otp">
+                    <label for="otp" style="margin-left: 45px; margin-top: 30px;">Enter OTP</label>
+                    <input type="text" class="form-control" id="otp" name="otp" style="width: 350px; height: 50px; margin-left:  40px; margin-top: 8px;">
+                </div>
+                <button type="submit" class="btn btn-primary" name="otp_submit" style="width: 150px ;height: 44px; margin-left: 140px;">Submit</button>
+            {% endif %}
+            {% if message %}
+                <div class="form-group ">
+                    <p style="margin-left: 60px; font-size: 35px; margin-top: 20px;">Enter your details</p>
+                    <label for="otp" style="margin-left: 45px; margin-top: 15px;">Enter username</label>
+                    <input type="text" class="form-control" id="username" name="username" style="width: 350px; height: 50px; margin-left:  40px; margin-top: 8px;">
+                </div>
+                <button type="submit" class="btn btn-primary" name="user_submit" style="width: 150px ;height: 44px; margin-left: 140px;">Submit</button>
+            {% endif %}
+            
+        </form>
+        {% endblock  %}
+        
+    
